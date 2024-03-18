@@ -2,14 +2,14 @@
 % Papadopoulou Aikaterini - 10009 - aapapadop@ece.auth.gr
 
 
-%% Setup 
+%% Setup
 close all
 clear
 clc
 
 
 %% System & Model Parameters
-% System 
+% System
 C = 1;
 M = 1;
 G = 10;
@@ -38,7 +38,7 @@ Q = a*eye(2);
 P = lyap(A_ref',Q);
 
 
-%% Reference Signal          
+%% Reference Signal
 % u = @(t) double(t>=0);                            % unit step (rename from u to r to use as input)
 % r = @(t) u(t-2)-u(t-8);                           % pulse (requires unit step function as u)
 % r = @(t)  4 * cos(t) ;                            % cosine
@@ -46,7 +46,7 @@ r = @(t) 3 + 4 * cos(t) + 5 * sin(3*t);             % sum of sin and cos
 
 
 %% Disturbances
-amp = 100;                                                           % amplitude                                                                  
+amp = 100;                                                           % amplitude
 h = @(t) double(t>=0);                                               % unit step
 d = @(t) amp*(h(t-7) - h(t-12));                                     % pulse (requires unit step as h)
 
@@ -57,7 +57,7 @@ x_init = zeros(8, 1);
 
 mode = 0;               % Select mode: 0 for no disturbances, 1 for disturbances
 
-odefun = @(t, x)derivatives2(t,x,r,A,B,H,f,A_ref,B_ref,d,sign_l,gamma1,gamma2,gamma3,P,mode);
+odefun = @(t, x)derivatives(t,x,r,A,B,H,f,A_ref,B_ref,d,sign_l,gamma1,gamma2,gamma3,P,mode);
 [t, x] = ode23(odefun, tspan, x_init);
 
 

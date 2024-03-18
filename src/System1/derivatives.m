@@ -1,4 +1,4 @@
-function sys_out = derivatives1(t,var,r,A,B,H,f,A_ref,B_ref,d,lambda0,p0,Gamma,mode)
+function sys_out = derivatives(t,var,r,A,B,H,f,A_ref,B_ref,d,lambda0,p0,Gamma,mode)
 disp(t)
 
 % Define variables from stack
@@ -38,7 +38,7 @@ omega_dot = [omega_1_dot ; omega_2_dot];
 
 if mode == 0
     x_dot = A*x + B*u + H*f(x_1);
-else 
+else
     x_dot = A*x + B*(u+d(t)) + H*f(x_1);
 end
 % x_dot = A*x + B*u + H*f(x_1);

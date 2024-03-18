@@ -1,4 +1,4 @@
-function sys_out = derivatives2(t,var,r,A,B,H,f,A_ref,B_ref,d,sign_l,gamma1,gamma2,gamma3,P,mode)
+function sys_out = derivatives(t,var,r,A,B,H,f,A_ref,B_ref,d,sign_l,gamma1,gamma2,gamma3,P,mode)
 disp(t)
 
 % Define variables from stack
@@ -22,10 +22,10 @@ e = x - x_ref;
 % Calculate control input
 u = -K*x - L*r(t) - M*f(x_1);
 
-% Calculate derivates 
+% Calculate derivates
 if mode == 0
     x_dot = A*x + B*u + H*f(x_1);
-else 
+else
     x_dot = A*x + B*(u+d(t)) + H*f(x_1);
 end
 % x_dot = A*x + B*u + H*f(x_1);

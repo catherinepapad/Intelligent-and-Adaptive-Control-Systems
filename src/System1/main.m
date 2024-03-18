@@ -42,7 +42,7 @@ r = @(t) 3 + 4 * cos(t) + 5 * sin(3*t);             % sum of sin and cos
 
 
 %% Disturbances
-amp = 500;                                                            % amplitude                                                                  
+amp = 500;                                                            % amplitude
 h = @(t) double(t>=0);                                                 % unit step
 d = @(t) amp*(h(t-7) - h(t-12));                                       % pulse (requires unit step as h)
 
@@ -51,9 +51,9 @@ d = @(t) amp*(h(t-7) - h(t-12));                                       % pulse (
 tspan = 0:0.001:25;
 x_init = zeros(14, 1);
 
-mode = 0;               % Select mode: 0 for no disturbances, 1 for disturbances 
+mode = 0;               % Select mode: 0 for no disturbances, 1 for disturbances
 
-odefun = @(t, x)derivatives1(t,x,r,A,B,H,f,A_ref,B_ref,d,lambda0,p0,Gamma,mode);
+odefun = @(t, x)derivatives(t,x,r,A,B,H,f,A_ref,B_ref,d,lambda0,p0,Gamma,mode);
 [t, x] = ode23(odefun, tspan, x_init);
 
 
