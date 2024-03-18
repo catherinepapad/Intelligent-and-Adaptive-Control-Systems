@@ -11,5 +11,5 @@ After linearizing the system, design and simulate a direct model reference adapt
 ## Controller 2
 
 Without linearizing the system, design and simulate a direct model reference adaptive control (D-MRAC) scheme using state feedback. The reference model
-$$\dot{x}_{ref} = A_{ref} \, \dot{x}_{ref} + B_{ref} \, r(t)$$
+$$\dot{x}_r = A_r x_r + B_r  r(t)$$ 
 should have a damping ratio equal to 0.7 and a natural frequency equal to 1 $rad/s$ .
